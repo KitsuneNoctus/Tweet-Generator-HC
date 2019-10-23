@@ -5,7 +5,6 @@ def rearrange_Quote(string):
     new_string = ""
     string_list = string.split()
     for word in string.split():
-        # random_word = string_list[random.randint(0,len(string_list)-1)]
         random_word = random.choice(string_list)
         if len(string_list)<2:
             new_string += (random_word)
@@ -13,6 +12,11 @@ def rearrange_Quote(string):
             new_string += (random_word + " ")
         string_list.remove(random_word)
     return new_string + "."
+
+def test_rearrange_Quote():
+    string_test = "I am the greatest."
+
+    assert string_test != rearrange_Quote(string_test)
 
 def reverse_Quote(string):
     """Will put the entire string backwards"""
