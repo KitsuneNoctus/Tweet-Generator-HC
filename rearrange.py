@@ -1,6 +1,7 @@
 import random, sys
 
 def rearrange_Quote(string):
+    """Randomizes the entire string order"""
     new_string = ""
     string_list = string.split()
     for word in string.split():
@@ -13,6 +14,7 @@ def rearrange_Quote(string):
     return new_string + "."
 
 def reverse_Quote(string):
+    """Will put the entire string backwards"""
     new_string = ""
     string_list = string.split()
     for word in string.split():
