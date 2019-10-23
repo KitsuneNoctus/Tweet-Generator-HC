@@ -5,9 +5,12 @@ def rearrange_Quote(string):
     string_list = string.split()
     for word in string.split():
         random_word = string_list[random.randint(0,len(string_list)-1)]
-        new_string += (random_word + " ")
+        if len(string_list)<2:
+            new_string += (random_word)
+        else:
+            new_string += (random_word + " ")
         string_list.remove(random_word)
-    return new_string
+    return new_string + "."
 
 def reverse_Quote(string):
     new_string = ""
