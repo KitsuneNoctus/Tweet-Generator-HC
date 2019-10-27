@@ -3,7 +3,12 @@
 def get_words():
     #Found this snippet of code from here: https://stackoverflow.com/questions/4666339/python-and-palindromes
     #Look up list comprhension
-    text_words = [line.strip() for line in open('les_miserables.txt')]
+    # text_words = [line.strip() for line in open('les_miserables.txt')]
+    text_words = []
+    with open('les_miserables.txt','r') as f:
+        for line in f:
+            for word in line.split():
+                text_words.append(word)
     return text_words
 def histogram(text):
     '''
@@ -35,4 +40,5 @@ def frequency(histogram,words):
     '''
     pass
 
-print(histogram(get_words()))
+# print(histogram(get_words()))
+print(get_words())
