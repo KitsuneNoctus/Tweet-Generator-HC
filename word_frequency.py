@@ -1,5 +1,6 @@
 # Counts the number of times each word in a piece of text appears
-
+# https://stackoverflow.com/questions/37221307/how-do-i-strip-all-leading-and-trailing-punctuation-in-python
+from string import punctuation
 def get_words():
     #Found this snippet of code from here: https://stackoverflow.com/questions/4666339/python-and-palindromes
     #Look up list comprhension
@@ -8,8 +9,10 @@ def get_words():
     with open('les_miserables.txt','r') as f:
         for line in f:
             for word in line.split():
-                text_words.append(word)
+                clean_word = word.strip(punctuation)
+                text_words.append(clean_word)
     return text_words
+
 def histogram(text):
     '''
     takes a source_text argument (can be either a filename or the contents of the file as a string,
@@ -40,5 +43,5 @@ def frequency(histogram,words):
     '''
     pass
 
-# print(histogram(get_words()))
-print(get_words())
+print(histogram(get_words()))
+# print(get_words())
