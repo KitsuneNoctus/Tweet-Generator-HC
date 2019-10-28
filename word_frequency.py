@@ -37,8 +37,7 @@ def histogram(text):
         list_of_tuples.append(tuple((entry,dictionary_for_text[entry])))
 
 
-    print(list_of_tuples)
-    # return dictionary_for_text
+    return dictionary_for_text
 
 def unique_words(histogram):
     '''
