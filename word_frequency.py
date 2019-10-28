@@ -20,13 +20,25 @@ def histogram(text):
     of times the word appears in the source text.
     '''
     dictionary_for_text = {}
+    list_of_lists = []
+    list_of_tuples = []
+    count_of_words = []
+
     for word in text:
         if word not in dictionary_for_text:
             dictionary_for_text[word] = 1
         else:
             dictionary_for_text[word] += 1
 
-    return dictionary_for_text
+    for entry in dictionary_for_text:
+        next_entry = [entry,dictionary_for_text[entry]]
+        list_of_lists.append(next_entry)
+
+        list_of_tuples.append(tuple((entry,dictionary_for_text[entry])))
+
+
+    print(list_of_tuples)
+    # return dictionary_for_text
 
 def unique_words(histogram):
     '''
@@ -52,7 +64,7 @@ def frequency(histogram,word):
             return histogram[key]
 
 if __name__=='__main__':
-    user_input = input("Enter word looking for: ")
-    print(frequency(histogram(get_words()),user_input))
+    # user_input = input("Enter word looking for: ")
+    # print(frequency(histogram(get_words()),user_input))
     # print(unique_words(histogram(get_words())))
-    # print(histogram(get_words()))
+    print(histogram(get_words()))
