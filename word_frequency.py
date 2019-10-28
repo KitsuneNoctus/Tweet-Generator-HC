@@ -23,6 +23,7 @@ def histogram(text):
     list_of_lists = []
     list_of_tuples = []
     count_of_words = []
+    all_counts = []
 
     for word in text:
         if word not in dictionary_for_text:
@@ -37,7 +38,6 @@ def histogram(text):
 
     for entry in dictionary_for_text:
         number_count = dictionary_for_text[entry]
-        all_counts = []
         list_or_wordss = []
         if number_count not in all_counts:
             all_counts.append(number_count)
@@ -47,7 +47,6 @@ def histogram(text):
                     list_or_wordss.append(entry)
 
             count_of_words.append(tuple((number_count,list_or_wordss)) )
-
 
     print(count_of_words)
     # return dictionary_for_text
