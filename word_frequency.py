@@ -6,7 +6,7 @@ def get_words():
     #Look up list comprhension
     # text_words = [line.strip() for line in open('les_miserables.txt')]
     text_words = []
-    with open('les_miserables.txt','r') as f:
+    with open('pygmalion.txt','r') as f:
         for line in f:
             for word in line.split():
                 clean_word = word.strip(punctuation)
@@ -27,12 +27,20 @@ def histogram(text):
             dictionary_for_text[word] += 1
 
     return dictionary_for_text
-    pass
 
 def unique_words(histogram):
     '''
     takes a histogram argument and returns the total count of unique words in the histogram.
     '''
+    # 'under': 436,
+    unique_count = 0
+    for key in histogram:
+        if histogram[key] == 1:
+            unique_count += 1
+        # if key == "under":
+        #     unique_count += histogram[key]
+
+    return unique_count
 
     pass
 
@@ -42,6 +50,6 @@ def frequency(histogram,words):
     For example, when given the word "mystery" and the Holmes histogram, it will return the integer 20.
     '''
     pass
-
-print(histogram(get_words()))
+print(unique_words(histogram(get_words())))
+# print(histogram(get_words()))
 # print(get_words())
