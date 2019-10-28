@@ -48,8 +48,8 @@ def histogram(text):
 
             count_of_words.append(tuple((number_count,list_or_wordss)) )
 
-    print(count_of_words)
-    # return dictionary_for_text
+    # print(count_of_words)
+    return dictionary_for_text
 
 def unique_words(histogram):
     '''
