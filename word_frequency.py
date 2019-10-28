@@ -54,16 +54,18 @@ def histogram(text):
 def unique_words(histogram):
     '''
     takes a histogram argument and returns the total count of unique words in the histogram.
+    Return the amount of different words.
     '''
-    # 'under': 436,
-    unique_count = 0
-    for key in histogram:
-        if histogram[key] == 1:
-            unique_count += 1
+    # unique_count = 0
+    # for key in histogram:
+    #     if histogram[key] == 1:
+    #         unique_count += 1
+
         # if key == "under":
         #     unique_count += histogram[key]
 
-    return unique_count
+    return len(histogram)
+    # unique_count
 
 def frequency(histogram,word):
     '''
@@ -75,7 +77,7 @@ def frequency(histogram,word):
             return histogram[key]
 
 if __name__=='__main__':
-    # user_input = input("Enter word looking for: ")
-    # print(frequency(histogram(get_words()),user_input))
+    user_input = input("Enter word looking for: ")
+    print(frequency(histogram(get_words()),user_input))
     # print(unique_words(histogram(get_words())))
-    print(histogram(get_words()))
+    # print(histogram(get_words()))
