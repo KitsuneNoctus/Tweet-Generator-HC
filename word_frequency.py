@@ -56,4 +56,3 @@ if __name__=='__main__':
     print(frequency(histogram(get_words()),user_input))
     # print(unique_words(histogram(get_words())))
     # print(histogram(get_words()))
-    # print(get_words())
