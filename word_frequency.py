@@ -1,6 +1,7 @@
 # Counts the number of times each word in a piece of text appears
 # https://stackoverflow.com/questions/37221307/how-do-i-strip-all-leading-and-trailing-punctuation-in-python
 from string import punctuation
+
 def get_words():
     #Found this snippet of code from here: https://stackoverflow.com/questions/4666339/python-and-palindromes
     #Look up list comprhension
@@ -23,6 +24,7 @@ def histogram(text):
     list_of_lists = []
     list_of_tuples = []
     count_of_words = []
+
     all_counts = []
 
     for word in text:
@@ -34,6 +36,7 @@ def histogram(text):
     for entry in dictionary_for_text:
         next_entry = [entry,dictionary_for_text[entry]]
         list_of_lists.append(next_entry)
+
         list_of_tuples.append(tuple((entry,dictionary_for_text[entry])))
 
     for entry in dictionary_for_text:
@@ -63,7 +66,7 @@ def unique_words(histogram):
 
         # if key == "under":
         #     unique_count += histogram[key]
-
+    # Using this method on advice from David
     return len(histogram)
     # unique_count
 
@@ -75,6 +78,7 @@ def frequency(histogram,word):
     for key in histogram:
         if word == key:
             return histogram[key]
+
 
 if __name__=='__main__':
     user_input = input("Enter word looking for: ")
