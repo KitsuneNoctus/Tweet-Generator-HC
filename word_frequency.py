@@ -33,11 +33,24 @@ def histogram(text):
     for entry in dictionary_for_text:
         next_entry = [entry,dictionary_for_text[entry]]
         list_of_lists.append(next_entry)
-
         list_of_tuples.append(tuple((entry,dictionary_for_text[entry])))
 
+    for entry in dictionary_for_text:
+        number_count = dictionary_for_text[entry]
+        all_counts = []
+        list_or_wordss = []
+        if number_count not in all_counts:
+            all_counts.append(number_count)
+            # list_or_words = []
+            for entry in dictionary_for_text:
+                if dictionary_for_text[entry] == number_count:
+                    list_or_wordss.append(entry)
 
-    return dictionary_for_text
+            count_of_words.append(tuple((number_count,list_or_wordss)) )
+
+
+    print(count_of_words)
+    # return dictionary_for_text
 
 def unique_words(histogram):
     '''
