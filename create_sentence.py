@@ -16,6 +16,5 @@ if __name__=='__main__':
     #Example for use: "one fish two fish red fish blue fish"
     string_of_words = sys.argv[1:]
     # params[0]
-    print(string_of_words)
-    print(convert_histogram(string_of_words))
-    # print(pick_one_word(convert_histogram(string_of_words)))
+    # print(convert_histogram(string_of_words))
+    print(pick_one_word(convert_histogram(string_of_words)))
