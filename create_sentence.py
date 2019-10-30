@@ -1,8 +1,9 @@
 import word_frequency, dictionary_words, random, sys
 
 def convert_histogram(text):
-    text_stuff = text.split()
-    word_counts = word_frequency.histogram(text_stuff)
+    # text_stuff = text.split()
+    word_counts = word_frequency.histogram(text)
+    # print(word_counts)
     return word_counts
 
 def pick_one_word(histogram):
@@ -11,7 +12,10 @@ def pick_one_word(histogram):
     return one_entry
 
 if __name__=='__main__':
-    params = sys.argv[1:]
+    # params = sys.argv[1:]
     #Example for use: "one fish two fish red fish blue fish"
-    string_of_words = str(params[0])
-    print(pick_one_word(convert_histogram(string_of_words)))
+    string_of_words = sys.argv[1:]
+    # params[0]
+    print(string_of_words)
+    print(convert_histogram(string_of_words))
+    # print(pick_one_word(convert_histogram(string_of_words)))
