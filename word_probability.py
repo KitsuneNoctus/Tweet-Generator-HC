@@ -6,15 +6,20 @@ def convert_histogram(text):
     # print(word_counts)
     return word_counts
 
-def pick_one_word(histogram, rate):
+def pick_one_word(histogram, rates):
     # https://pynative.com/python-random-choice/
+    dart = random.random()
     num_total = 0
     check_start = 0
-    check_end = 0
-    
-    # random.iyuo(0,1)
-    one_entry = random.choice(list(histogram))
-    return one_entry
+    for rate in rates:
+        check_end = rates[rate]
+        if dart <= check_end and dart > check_start:
+            return rate
+        pass
+
+    # # random.iyuo(0,1)
+    # one_entry = random.choice(list(histogram))
+    # return one_entry
 
 def calc_probability(histogram):
     rates = {}
