@@ -19,7 +19,6 @@ def pick_one_word(histogram, rates):
         else:
             check_start = check_end
 
-        pass
 
     # # random.iyuo(0,1)
     # one_entry = random.choice(list(histogram))
@@ -44,6 +43,10 @@ if __name__=='__main__':
     string_of_words = sys.argv[1:]
     # params[0]
     # print(convert_histogram(string_of_words))
+
+    print("----------")
+    print(calc_probability(convert_histogram(string_of_words)))
+    print("----------")
     print(pick_one_word(convert_histogram(string_of_words), calc_probability(convert_histogram(string_of_words))))
     print("----------")
     # calc_probability(convert_histogram(string_of_words))
