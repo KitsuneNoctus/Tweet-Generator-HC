@@ -1,8 +1,9 @@
 import word_frequency, dictionary_words, random, sys
 
-def convert_histogram(text):
+def convert_histogram(): #text
     # text_stuff = text.split()
-    word_counts = word_frequency.histogram(text)
+    # word_counts = word_frequency.histogram(text)
+    word_counts = word_frequency.histogram(word_frequency.get_words())
     # print(word_counts)
     return word_counts
 
