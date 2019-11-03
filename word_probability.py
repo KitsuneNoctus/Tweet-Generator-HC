@@ -6,7 +6,7 @@ def convert_histogram(text):
     # print(word_counts)
     return word_counts
 
-def pick_one_word(histogram, rates):
+def pick_one_word(rates):
     # https://pynative.com/python-random-choice/
     dart = random.random()
     num_total = 0
@@ -37,6 +37,31 @@ def calc_probability(histogram):
 
     return rates
 
+def check_correct_probability(repeat):
+    fish_count = 0
+    red_count = 0
+    blue_count = 0
+    one_count = 0
+    two_count = 0
+    for _ in range(0,repeat):
+        word = pick_one_word(calc_probability(convert_histogram(string_of_words)))
+        if word == "fish":
+            fish_count += 1
+        elif word == "blue":
+            blue_count += 1
+        elif word == "red":
+            red_count += 1
+        elif word == "one":
+            one_count += 1
+        elif word == "two":
+            two_count += 1
+    print(f"fish: {fish_count}")
+    print(f"red: {red_count}")
+    print(f"blue: {blue_count}")
+    print(f"one: {one_count}")
+    print(f"two: {two_count}")
+
+
 if __name__=='__main__':
     # params = sys.argv[1:]
     #Example for use: "one fish two fish red fish blue fish"
@@ -47,6 +72,7 @@ if __name__=='__main__':
     print("----------")
     print(calc_probability(convert_histogram(string_of_words)))
     print("----------")
-    print(pick_one_word(convert_histogram(string_of_words), calc_probability(convert_histogram(string_of_words))))
+    print(pick_one_word(calc_probability(convert_histogram(string_of_words))))
     print("----------")
     # calc_probability(convert_histogram(string_of_words))
+    check_correct_probability(10000)
