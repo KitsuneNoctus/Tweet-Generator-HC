@@ -20,6 +20,22 @@ class Listogram(list):
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
+        # Copied shamelessly from https://github.com/Evansdava/Tweet-Generator/blob/master/python/histogram.py
+        # Still need to ask if its okay
+        added = True
+        for sub_list in self:
+            if sub_list[0] == word:
+                sub_list[1] += count
+                added = False
+        if added is True:
+            self.append([word, 1])
+
+            """ Made my own attempt at it, couldnt figure it out """
+        # for sub_list in self:
+        #     if sub_list[0] == word:
+        #         sub_list[1] += count
+        # if
+
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
@@ -39,7 +55,7 @@ def print_histogram(word_list):
     print('word list: {}'.format(word_list))
     # Create a listogram and display its contents
     histogram = Listogram(word_list)
-    
+
     print('listogram: {}'.format(histogram))
     print('{} tokens, {} types'.format(histogram.tokens, histogram.types))
     for word in word_list[-2:]:
