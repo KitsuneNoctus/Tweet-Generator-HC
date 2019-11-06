@@ -17,13 +17,6 @@ class Dictogram(dict):
         if word_list is not None:
             for word in word_list:
                 self.add_count(word)
-        # -----------Work in progress---------------
-        # text_words = []
-        # with open('pygmalion.txt','r') as f:
-        #     for line in f:
-        #         for word in line.split():
-        #             clean_word = word.strip(punctuation)
-        #             text_words.append(clean_word)
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
@@ -50,13 +43,9 @@ class Dictogram(dict):
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
         rates = {}
-        total_amount = 0
-
-        for i in self:
-            total_amount += self[i]
 
         for entry in self:
-            rate = self[entry]/total_amount
+            rate = self[entry]/self.tokens
             rates[entry] = rate
 
 

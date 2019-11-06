@@ -1,7 +1,7 @@
 #!python
 
 from __future__ import division, print_function  # Python 2 and 3 compatibility
-
+import random
 
 class Listogram(list):
     """Listogram is a histogram implemented as a subclass of the list type."""
@@ -73,6 +73,27 @@ class Listogram(list):
         """Return a word from this histogram, randomly sampled by weighting
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
+
+        rates = []
+
+        for entry in self:
+            rate = entry[1]/self.tokens
+            rates.append([entry[0], rate])
+
+
+        #==========================================
+
+
+        dart = random.random()
+        num_total = 0
+        check_start = 0
+        check_end = 0
+        for rate in rates:
+            check_end += rate[1]
+            if dart <= check_end and dart > check_start:
+                return rate[0]
+            else:
+                check_start = check_end
 
 #---------------------------------The Words-----------------------------------------------
 def print_histogram(word_list):
