@@ -17,37 +17,47 @@ class Dictogram(dict):
             for word in word_list:
                 self.add_count(word)
         # -----------Work in progress---------------
-        text_words = []
-        with open('pygmalion.txt','r') as f:
-            for line in f:
-                for word in line.split():
-                    clean_word = word.strip(punctuation)
-                    text_words.append(clean_word)
+        # text_words = []
+        # with open('pygmalion.txt','r') as f:
+        #     for line in f:
+        #         for word in line.split():
+        #             clean_word = word.strip(punctuation)
+        #             text_words.append(clean_word)
 
     def add_count(self, word, count=1):
         """Increase frequency count of given word by given count amount."""
         # TODO: Increase word frequency by count
         # -----------Work in progress---------------
-        for word in text:
-            if word not in dictionary_for_text:
-                dictionary_for_text[word] = 1
-            else:
-                dictionary_for_text[word] += 1
+        if word not in self:
+            self[word] = count
+            self.types += 1
+            self.tokens += count
+        else:
+            self[word] += count
+            self.tokens += count
+        #word
+        # for word in self.word_list:
+        #     self.word_list[word] += count
+            # if word not in dictionary_for_text:
+            #     dictionary_for_text[word] = 1
+            # else:
+            #     dictionary_for_text[word] += 1
 
     def frequency(self, word):
         """Return frequency count of given word, or 0 if word is not found."""
         # TODO: Retrieve word frequency count
-        for key in histogram:
-            if word == key:
-                return histogram[key]
-            else:
-                return 0
+        # for key in histogram:
+        #     if word == key:
+        #         return histogram[key]
+        #     else:
+        #         return 0
 
-
+#-----------------------------------------------------------------------------------
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
     # Create a dictogram and display its contents
     histogram = Dictogram(word_list)
+
     print('dictogram: {}'.format(histogram))
     print('{} tokens, {} types'.format(histogram.tokens, histogram.types))
     for word in word_list[-2:]:

@@ -34,11 +34,12 @@ class Listogram(list):
         this histogram, or None if target word is not found."""
         # TODO: Implement linear search to find index of entry with target word
 
-
+#---------------------------------The Words-----------------------------------------------
 def print_histogram(word_list):
     print('word list: {}'.format(word_list))
     # Create a listogram and display its contents
     histogram = Listogram(word_list)
+    
     print('listogram: {}'.format(histogram))
     print('{} tokens, {} types'.format(histogram.tokens, histogram.types))
     for word in word_list[-2:]:
