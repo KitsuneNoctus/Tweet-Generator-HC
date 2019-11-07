@@ -29,8 +29,8 @@ class Listogram(list):
                 self.tokens += count
                 added = False
         if added is True:
-            self.append([word, 1])
-            self.types += count
+            self.append([word, count])
+            self.types += 1
             self.tokens += count
 
             """ Made my own attempt at it, couldnt figure it out """
