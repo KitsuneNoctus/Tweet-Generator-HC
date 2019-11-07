@@ -22,18 +22,18 @@ class Listogram(list):
         # TODO: Increase word frequency by count
         # Copied shamelessly from https://github.com/Evansdava/Tweet-Generator/blob/master/python/histogram.py
         # Still need to ask if its okay
+        # Used https://stackoverflow.com/questions/2582138/finding-and-replacing-elements-in-a-list as reference
         added = True
-        for sub_list in self:
+        for index, sub_list in enumerate(self):
             if sub_list[0] == word:
-                # the_count = sub_list[1]
-                # the_count += 1
-                # self.remove(sub_list)
-                # self.append((word, the_count))
-                sub_list[1] += count
+                the_count = sub_list[1]
+                the_count += count
+                self[index] = (word, the_count)
+                # sub_list[1] += count
                 self.tokens += count
                 added = False
         if added is True:
-            self.append([word, count])
+            self.append((word, count))
             self.types += 1
             self.tokens += count
 
