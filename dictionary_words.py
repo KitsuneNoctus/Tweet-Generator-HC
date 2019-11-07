@@ -13,8 +13,8 @@ def get_words():
     return words_list
 
 
-def create_random_sentence(sen_length):
-    words_list = get_words()
+def create_random_sentence(sen_length, word_list):
+
     sentence = ""
     while sen_length != 0:
         ran_word = random.choice(words_list)
@@ -30,6 +30,6 @@ def create_random_sentence(sen_length):
 if __name__=='__main__':
     params = sys.argv[1:]
     number = int(params[0])
-    print(create_random_sentence(number))
+    print(create_random_sentence(number,get_words()))
     #print(reverse_Quote(string_of_words))
     pass

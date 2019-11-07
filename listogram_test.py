@@ -21,6 +21,8 @@ class ListogramTest(unittest.TestCase):
         listogram = Listogram(self.fish_words)
         # Verify histogram as list of entries like [(word, count)]
         assert len(listogram) == 5
+        print(len(listogram))
+        print(len(self.fish_list))
         self.assertCountEqual(listogram, self.fish_list)  # Ignore item order
         # Verify histogram as dictionary of entries like {word: count}
         dictogram = dict(listogram)
@@ -32,6 +34,7 @@ class ListogramTest(unittest.TestCase):
         # All of these words should be found
         for word in self.fish_words:
             assert word in histogram
+
         # None of these words should be found
         for word in ('fishy', 'food'):
             assert word not in histogram
