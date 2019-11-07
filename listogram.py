@@ -25,6 +25,10 @@ class Listogram(list):
         added = True
         for sub_list in self:
             if sub_list[0] == word:
+                # the_count = sub_list[1]
+                # the_count += 1
+                # self.remove(sub_list)
+                # self.append((word, the_count))
                 sub_list[1] += count
                 self.tokens += count
                 added = False
@@ -53,11 +57,12 @@ class Listogram(list):
     def __contains__(self, word):
         """Return boolean indicating if given word is in this histogram."""
         # TODO: Check if word is in this histogram
+        is_there = False
         for sub_list in self:
             if sub_list[0] == word:
-                return True
-            else:
-                return False
+                is_there = True
+
+        return is_there
 
     def index_or(self, target):
         """Return the index of entry containing given target word if found in
