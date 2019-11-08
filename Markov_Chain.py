@@ -11,3 +11,11 @@ for word in test_string.split():
     text_words.append(clean_word)
 
 print(text_words)
+markov_dict = {}
+
+for word in text_words:
+
+    if word not in markov_dict:
+        markov_dict[word] = 1
+    else:
+        self[word] += 1
