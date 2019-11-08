@@ -25,7 +25,7 @@ def index():
     """Return homepage."""
     # dict_histogram = Dictogram(get_words())
     # dict_histogram.sample()
-    return create_random_sentence(10)
+    return render_template("index.html", sentence=create_random_sentence(10))
     # word_probability.pick_one_word(word_probability.calc_probability(word_probability.convert_histogram()))
 
 if __name__ == '__main__':
