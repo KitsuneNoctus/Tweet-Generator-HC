@@ -5,12 +5,18 @@ from string import punctuation
 
 test_string = "I can no longer help what I feel in my heart. What is the point of living anymore? I am the king."
 
-text_words = []
-for word in test_string.split():
-    clean_word = word.strip(punctuation)
-    text_words.append(clean_word)
+def create_list(string):
+    text_words = []
+    for word in string.split():
+        clean_word = word.strip(punctuation)
+        text_words.append(clean_word)
 
-print(text_words)
+    return text_words
+
+class Markov_Chain():
+    def __init__(self, word_list):
+
+print(create_list(test_string))
 markov_dict = {}
 
 for word in text_words:
