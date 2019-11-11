@@ -3,9 +3,10 @@ from word_frequency import get_words
 from dictogram import Dictogram
 from string import punctuation
 
-test_string = "I can no longer help what I feel in my heart. What is the point of living anymore? I am the king."
+test_string = "I am. I was. I can only be. I will be king. It is very tiring."
 
 def create_list(string):
+    """Turns string into a list of words"""
     text_words = []
     for word in string.split():
         clean_word = word.strip(punctuation)
@@ -13,15 +14,24 @@ def create_list(string):
 
     return text_words
 
+print(create_list(test_string))
+#=============Markov Chain Class====================
 class Markov_Chain():
     def __init__(self, word_list):
+        """Initialize the class and create variables"""
+        self.markov_dict = {}
+        self.word_list = word_list
 
-print(create_list(test_string))
-markov_dict = {}
+    def creating_chain():
+        """ Creating the Markov Chain """
+        for word in self.word_list:
+            if word not in self.markov_dict:
+                self.markov_dict[word] = 1
+            else:
+                self[word] += 1
 
-for word in text_words:
+    def creating_sentence():
+        pass
 
-    if word not in markov_dict:
-        markov_dict[word] = 1
-    else:
-        self[word] += 1
+if __name__=="__main__":
+    pass
