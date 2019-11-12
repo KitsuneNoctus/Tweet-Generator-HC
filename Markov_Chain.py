@@ -46,6 +46,8 @@ class Markov_Chain(dict):
         created_sentence += adding_word+" "
         while length-1 > 0:
             if adding_word in self:
+                print(self[adding_word])
+                print(sum(self[adding_word].values()))
                 pass
 
                 # word = "Moove"
