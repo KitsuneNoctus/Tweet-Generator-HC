@@ -2,6 +2,7 @@ from word_probability import pick_one_word, calc_probability, convert_histogram
 from word_frequency import get_words
 from dictogram import Dictogram
 from string import punctuation
+import random
 
 def create_list(string):
     """Turns string into a list of words"""
@@ -16,8 +17,8 @@ def create_list(string):
 class Markov_Chain(dict):
     def __init__(self, word_list):
         """Initialize the class and create variables"""
-
         self.word_list = word_list
+        self.dictionary_histogram = Dictogram(self.word_list)
 
         """ Creating the Markov Chain """
         for index in range(len(self.word_list)-1):
@@ -38,20 +39,56 @@ class Markov_Chain(dict):
 
 
     def creating_sentence(self, length = 10):
-        dictionary_histogram = Dictogram(self.word_list)
-        starting_word = dictionary_histogram.sample()
+        """Create sentence using both dictogram and the markov chain just made."""
+        adding_word = self.dictionary_histogram.sample()
+        last_word = adding_word
         created_sentence = ""
-        created_sentence += starting_word+" "
-        while length > 0:
+        created_sentence += adding_word+" "
+        while length-1 > 0:
+            if adding_word in self:
+                print("if ")
+                following_dictionary = self[adding_word]
+                total = 0
+                for following_word in following_dictionary:
+                    total += following_dictionary[following_word]
+                #--------------------------------------------------
+                rates = {}
+                print(total)
+                for following_word in following_dictionary:
+                    rate = following_dictionary[following_word]/total
+                    rates[following_word] = rate
+                print(rates)
+                dart = random.random()
+                num_total = 0
+                check_start = 0
+                check_end = 0
+                for rate in rates:
+                    check_end += rates[rate]
+                    if dart <= check_end and dart > check_start:
+                        created_sentence += rate+" "
+                        adding_word = rate
+                    else:
+                        check_start = check_end
+                # word = "Moove"
+                # created_sentence += f"{word} "
+                # adding_word = word
+            else:
+                adding = True
+                while adding:
+                    print("else ")
+                    adding_word = self.dictionary_histogram.sample()
+                    if adding_word != last_word:
+                        created_sentence += adding_word+" "
+                        last_word = adding_word
+                        adding = False
             length -= 1
-            pass
 
 
         return created_sentence
 
 if __name__=="__main__":
     # test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
-    test_string = "I am. I am is. I am was. I will always. I can't. I will be."
+    test_string = "I like dogs and you like dogs. I like cats but you hate cats."
     first_chain = Markov_Chain(create_list(test_string))
     print(first_chain)
     print(first_chain.creating_sentence())
