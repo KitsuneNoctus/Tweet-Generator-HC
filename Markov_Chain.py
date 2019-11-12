@@ -3,8 +3,6 @@ from word_frequency import get_words
 from dictogram import Dictogram
 from string import punctuation
 
-test_string = "I am. I was. I can only be. I will be king. It is very tiring."
-
 def create_list(string):
     """Turns string into a list of words"""
     text_words = []
@@ -43,7 +41,7 @@ if __name__=="__main__":
     dict_thing['Dict Test']['Hi'] = 'bye'
     dict_thing['Dict Test']['Why'] = 'Lies'
     print(dict_thing)
-    test_string = "I am. I was. I can only be. I will be king. It is very tiring."
+    test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
     first_chain = Markov_Chain(create_list(test_string))
     first_chain.creating_chain()
     print(first_chain)
