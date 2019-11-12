@@ -16,17 +16,17 @@ def create_list(string):
 
 print(create_list(test_string))
 #=============Markov Chain Class====================
-class Markov_Chain():
+class Markov_Chain(dict):
     def __init__(self, word_list):
         """Initialize the class and create variables"""
-        self.markov_dict = {}
+
         self.word_list = word_list
 
     def creating_chain():
         """ Creating the Markov Chain """
         for word in self.word_list:
             if word not in self.markov_dict:
-                self.markov_dict[word] = 1
+                self.markov_dict[word] = {}
             else:
                 self[word] += 1
 
