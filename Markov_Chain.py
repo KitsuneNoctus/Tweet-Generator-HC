@@ -25,18 +25,24 @@ class Markov_Chain(dict):
         """ Creating the Markov Chain """
         for index in range(len(self.word_list)-1):
             print(self)
-            # self[self.word_list[index]] = 1
             word = self.word_list[index]
             next_word = self.word_list[index+1]
+
             if word not in self:
-                self[word] = {next_word, 1}
+                self[word] = {}
+                self[word][next_word] = 1
             else:
-                self[self.word_list[index]][self.word_list[index+1]] += {self.word_list[index+1],1}
+                self[word][next_word] = 1
 
     def creating_sentence(self):
         pass
 
 if __name__=="__main__":
+    dict_thing = {}
+    dict_thing['Dict Test'] = {}
+    dict_thing['Dict Test']['Hi'] = 'bye'
+    dict_thing['Dict Test']['Why'] = 'Lies'
+    print(dict_thing)
     test_string = "I am. I was. I can only be. I will be king. It is very tiring."
     first_chain = Markov_Chain(create_list(test_string))
     first_chain.creating_chain()
