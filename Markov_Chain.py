@@ -22,7 +22,7 @@ class Markov_Chain(dict):
     def creating_chain(self):
         """ Creating the Markov Chain """
         for index in range(len(self.word_list)-1):
-            print(self)
+            # print(self)
             word = self.word_list[index]
             next_word = self.word_list[index+1]
 
@@ -30,18 +30,25 @@ class Markov_Chain(dict):
                 self[word] = {}
                 self[word][next_word] = 1
             else:
-                self[word][next_word] = 1
+                dict_of_counts = self[word]
+                if next_word not in dict_of_counts:
+                    self[word][next_word] = 1
+                else:
+                    dict_of_counts[next_word] += 1
+
+
 
     def creating_sentence(self):
         pass
 
 if __name__=="__main__":
-    dict_thing = {}
-    dict_thing['Dict Test'] = {}
-    dict_thing['Dict Test']['Hi'] = 'bye'
-    dict_thing['Dict Test']['Why'] = 'Lies'
-    print(dict_thing)
-    test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
+    # dict_thing = {}
+    # dict_thing['Dict Test'] = {}
+    # dict_thing['Dict Test']['Hi'] = 'bye'
+    # dict_thing['Dict Test']['Why'] = 'Lies'
+    # print(dict_thing)
+    # test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
+    test_string = "I am. I am is. I am was. I will alway. I can't. I will be."
     first_chain = Markov_Chain(create_list(test_string))
     first_chain.creating_chain()
     print(first_chain)
