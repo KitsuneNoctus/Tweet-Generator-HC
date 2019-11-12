@@ -19,7 +19,6 @@ class Markov_Chain(dict):
 
         self.word_list = word_list
 
-    def creating_chain(self):
         """ Creating the Markov Chain """
         for index in range(len(self.word_list)-1):
             # print(self)
@@ -38,17 +37,21 @@ class Markov_Chain(dict):
 
 
 
-    def creating_sentence(self):
-        pass
+    def creating_sentence(self, length = 10):
+        dictionary_histogram = Dictogram(self.word_list)
+        starting_word = dictionary_histogram.sample()
+        created_sentence = ""
+        created_sentence += starting_word+" "
+        while length > 0:
+            length -= 1
+            pass
+
+
+        return created_sentence
 
 if __name__=="__main__":
-    # dict_thing = {}
-    # dict_thing['Dict Test'] = {}
-    # dict_thing['Dict Test']['Hi'] = 'bye'
-    # dict_thing['Dict Test']['Why'] = 'Lies'
-    # print(dict_thing)
     # test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
-    test_string = "I am. I am is. I am was. I will alway. I can't. I will be."
+    test_string = "I am. I am is. I am was. I will always. I can't. I will be."
     first_chain = Markov_Chain(create_list(test_string))
-    first_chain.creating_chain()
     print(first_chain)
+    print(first_chain.creating_sentence())
