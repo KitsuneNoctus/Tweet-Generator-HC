@@ -14,7 +14,6 @@ def create_list(string):
 
     return text_words
 
-print(create_list(test_string))
 #=============Markov Chain Class====================
 class Markov_Chain(dict):
     def __init__(self, word_list):
@@ -22,16 +21,23 @@ class Markov_Chain(dict):
 
         self.word_list = word_list
 
-    def creating_chain():
+    def creating_chain(self):
         """ Creating the Markov Chain """
-        for word in self.word_list:
-            if word not in self.markov_dict:
-                self.markov_dict[word] = {}
+        for index in range(len(self.word_list)-1):
+            print(self)
+            # self[self.word_list[index]] = 1
+            word = self.word_list[index]
+            next_word = self.word_list[index+1]
+            if word not in self:
+                self[word] = {next_word, 1}
             else:
-                self[word] += 1
+                self[self.word_list[index]][self.word_list[index+1]] += {self.word_list[index+1],1}
 
-    def creating_sentence():
+    def creating_sentence(self):
         pass
 
 if __name__=="__main__":
-    pass
+    test_string = "I am. I was. I can only be. I will be king. It is very tiring."
+    first_chain = Markov_Chain(create_list(test_string))
+    first_chain.creating_chain()
+    print(first_chain)
