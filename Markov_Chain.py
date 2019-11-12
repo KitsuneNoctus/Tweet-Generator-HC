@@ -46,41 +46,13 @@ class Markov_Chain(dict):
         created_sentence += adding_word+" "
         while length-1 > 0:
             if adding_word in self:
-                print("if ")
-                following_dictionary = self[adding_word]
-                total = 0
-                for following_word in following_dictionary:
-                    total += following_dictionary[following_word]
-                #--------------------------------------------------
-                rates = {}
-                print(total)
-                for following_word in following_dictionary:
-                    rate = following_dictionary[following_word]/total
-                    rates[following_word] = rate
-                print(rates)
-                dart = random.random()
-                num_total = 0
-                check_start = 0
-                check_end = 0
-                for rate in rates:
-                    check_end += rates[rate]
-                    if dart <= check_end and dart > check_start:
-                        created_sentence += rate+" "
-                        adding_word = rate
-                    else:
-                        check_start = check_end
+                pass
+
                 # word = "Moove"
                 # created_sentence += f"{word} "
                 # adding_word = word
             else:
-                adding = True
-                while adding:
-                    print("else ")
-                    adding_word = self.dictionary_histogram.sample()
-                    if adding_word != last_word:
-                        created_sentence += adding_word+" "
-                        last_word = adding_word
-                        adding = False
+                pass
             length -= 1
 
 
