@@ -21,9 +21,13 @@ class Markov_Chain(dict):
         self.dictionary_histogram = Dictogram(self.word_list)
 
         """ Creating the Markov Chain """
-        for index in range(len(self.word_list)-1):
+        for index in range(len(self.word_list)):
             word = self.word_list[index]
-            next_word = self.word_list[index+1]
+
+            if len(self.word_list)==index+1:
+                next_word = None
+            else:
+                next_word = self.word_list[index+1]
 
             if word not in self:
                 small_dicto = Dictogram([next_word])
@@ -37,22 +41,29 @@ class Markov_Chain(dict):
         created_sentence = ""
         adding_word = self.dictionary_histogram.sample()
         created_sentence += adding_word+" "
+        length = length - 1
 
         last_word = adding_word
 
-        while length-1 > 0:
-            if adding_word in self:
-                total = sum(self[adding_word].values())
+        # sentence = ""
+        # while sen_length != 0:
+        #     ran_word = random.choice(words_list)
+        #     if sen_length == 1:
+        #         sentence += ran_word
+        #     else:
+        #         sentence += (ran_word + " ")
+        #     sen_length -= 1
 
-                print(self[adding_word])
-                print(sum(self[adding_word].values()))
-                pass
 
-                # word = "Moove"
-                # created_sentence += f"{word} "
-                # adding_word = word
-            else:
-                pass
+        while length > 0:
+            next_word_for = self[adding_word].sample()
+            created_sentence += next_word_for+" "
+            adding_word = next_word_for
+            # if adding_word in self:
+            #
+            #     pass
+            # else:
+            #     pass
 
             length -= 1
 
@@ -65,4 +76,4 @@ if __name__=="__main__":
     print(test_string)
     first_chain = Markov_Chain(create_list(test_string))
     print(first_chain)
-    # print(first_chain.creating_sentence())
+    print(first_chain.creating_sentence())
