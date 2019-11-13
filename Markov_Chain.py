@@ -21,7 +21,8 @@ class Markov_Chain(dict):
         self.dictionary_histogram = Dictogram(self.word_list)
 
         """ Creating the Markov Chain """
-        for index in range(len(self.word_list)):
+        #Edit so as to get rid of length of list minus 1 and it doesnt run errors
+        for index in range(len(self.word_list)-1):
             word = self.word_list[index]
 
             if len(self.word_list)==index+1:
@@ -38,22 +39,13 @@ class Markov_Chain(dict):
 
     def creating_sentence(self, length = 10):
         """Create sentence using both dictogram and the markov chain just made."""
+        #Edit so it adds periodss and not spaces at the end of a sentence.
         created_sentence = ""
         adding_word = self.dictionary_histogram.sample()
         created_sentence += adding_word+" "
         length = length - 1
 
         last_word = adding_word
-
-        # sentence = ""
-        # while sen_length != 0:
-        #     ran_word = random.choice(words_list)
-        #     if sen_length == 1:
-        #         sentence += ran_word
-        #     else:
-        #         sentence += (ran_word + " ")
-        #     sen_length -= 1
-
 
         while length > 0:
             next_word_for = self[adding_word].sample()
