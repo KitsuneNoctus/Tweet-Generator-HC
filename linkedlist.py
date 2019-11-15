@@ -118,17 +118,47 @@ class LinkedList(object):
 
         node = self.head
         previous_node = None
+
         while node is not None:
             if node.data == item:
-                # if self.length() == 1:
-                #     self.head = None
-                #     self.tail = None
-                if node == self.head:
+                #Used Diyar Kudrat reference. This erases the head.
+                if previous_node == None:
                     self.head = node.next
-                elif node == self.tail:
+                    if node.next == None:
+                        self.tail = None
+                #Gets rid of tail. Also with help from Diyar
+                elif node.next == None:
+                    previous_node.next = None
                     self.tail = previous_node
                 else:
-                    previous_node.next = current_node.next
+                    ''' Gets rid of the current node by switching the previous nodes
+                    next reference to the current nodes next reference, thus removing any
+                    reference of the node the was just in between.'''
+                    previous_node.next = node.next
+
+        #------------My own attempts before reference\ing or help------------------------
+                # if node.next == None:
+                #     '''If there is only the single item.'''
+                #     self.head = None
+                #     self.tail = None
+                #
+                # elif previous_node == None:
+                #     pass
+                    # if node.next == None:
+                    #     self.head = None
+                    #     self.tail = None
+                    # else:
+                    #     self.head = node.next
+            #---------------------------------------
+                # # if self.length() == 1:
+                # #     self.head = None
+                # #     self.tail = None
+                # if node == self.head:
+                #     self.head = node.next
+                # elif node == self.tail:
+                #     self.tail = previous_node
+                # else:
+                #     previous_node.next = current_node.next
                 return
             else:
                 previous_node = node
