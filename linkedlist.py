@@ -116,9 +116,27 @@ class LinkedList(object):
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
 
-        # node = self.head
-        # while node not None:
-        #     pass
+        node = self.head
+        previous_node = None
+        while node is not None:
+            if node.data == item:
+                # if self.length() == 1:
+                #     self.head = None
+                #     self.tail = None
+                if node == self.head:
+                    self.head = node.next
+                elif node == self.tail:
+                    self.tail = previous_node
+                else:
+                    previous_node.next = current_node.next
+                return
+            else:
+                previous_node = node
+                node = node.next
+
+        raise ValueError(f'Item not found: {item}')
+
+
 
 
 def test_linked_list():
