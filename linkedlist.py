@@ -84,9 +84,9 @@ class LinkedList(object):
         # TODO: Create new node to hold given item
         new_node = Node(item)
         # TODO: Prepend node before head, if it exists
-        if node.head is not None:
-            new_node.next = node.head
-            node.head = new_node
+        if self.head is not None:
+            new_node.next = self.head
+            self.head = new_node
         else:
             self.head = new_node
             self.tail = new_node
