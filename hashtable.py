@@ -121,7 +121,7 @@ class HashTable(object):
         index = self._bucket_index(key)
         bucket = self.buckets[index]
         # TODO: Check if key-value entry exists in bucket
-        node = bucket.find(lambda items: item == key)
+        node = bucket.find(lambda item: item [0] == key)
         # TODO: If found, delete entry associated with given key
         if node is not None:
             bucket.delete(node)
