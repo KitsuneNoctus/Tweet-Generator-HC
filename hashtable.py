@@ -78,10 +78,8 @@ class HashTable(object):
         #reference to https://github.com/BriantOliveira/Computer_Science_2/blob/master/hashtable.py
         index = self._bucket_index(key)
         bucket = self.buckets[index]
-        data = self.buckets[index]
-
-        data = bucket.find(lambda item:[0] == key)
-        # data = bucket.find(key)
+        # data = self.buckets[index]
+        data = bucket.find(lambda item: item [0] == key)
         return data is not None
 
 
@@ -92,12 +90,12 @@ class HashTable(object):
         index = self._bucket_index(key)
         bucket = self.buckets[index]
         # TODO: Check if key-value entry exists in bucket
-        node = bucket.find(lambda item: item == key)
+        node = bucket.find(lambda item: item [0] == key)
         # TODO: If found, return value associated with given key
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
         if node is not None:
-            node.data
+            return node[1]
         else:
             raise KeyError(f'Key Not Found: {key}')
 
@@ -131,7 +129,6 @@ class HashTable(object):
             raise KeyError(f'Key not found: {key}')
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
-        # if
 
 
 def test_hash_table():
