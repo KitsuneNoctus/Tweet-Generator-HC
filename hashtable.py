@@ -89,13 +89,17 @@ class HashTable(object):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
-        # index = self._bucket_index(key)
-        # bucket = self.buckets[index]
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
         # TODO: Check if key-value entry exists in bucket
+        node = bucket.find(lambda item: item == key)
         # TODO: If found, return value associated with given key
         # TODO: Otherwise, raise error to tell user get failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
-        # raise KeyError(f'Key not found: {key}')
+        if node is not None:
+            node.data
+        else:
+            raise KeyError(f'Key Not Found: {key}')
 
     def set(self, key, value):
         """Insert or update the given key with its associated value.
@@ -106,19 +110,25 @@ class HashTable(object):
         # TODO: Otherwise, insert given key-value entry into bucket
         index = self._bucket_index(key)
         bucket = self.buckets[index]
+        node = bucket.find(lambda item: item == key)
 
+        if node is not None:
+            bucket.delete(node)
         bucket.append((key, value))
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
-        # index = self._bucket_index(key)
-        # bucket = self.buckets[index]
-        
-        # node = bucket.find(lambda tuple: tuple[0] == key)
+        index = self._bucket_index(key)
+        bucket = self.buckets[index]
         # TODO: Check if key-value entry exists in bucket
+        node = bucket.find(lambda items: item == key)
         # TODO: If found, delete entry associated with given key
+        if node is not None:
+            bucket.delete(node)
+        else:
+            raise KeyError(f'Key not found: {key}')
         # TODO: Otherwise, raise error to tell user delete failed
         # Hint: raise KeyError('Key not found: {}'.format(key))
         # if
