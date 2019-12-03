@@ -22,20 +22,23 @@ class Markov_Chain(dict):
 
         """ Creating the Markov Chain """
         #Edit so as to get rid of length of list minus 1 and it doesnt run errors
-        for index in range(len(self.word_list)-1):
+        for index in range(len(self.word_list)-2):
             word = self.word_list[index]
+            next_word = self.word_list[index+1]
+            word_after_next = self.word_list[index+2]
 
-            if len(self.word_list)==index+1:
-                next_word = None
+            # -----------------------------------------
+            # if len(self.word_list)==index+1:
+            #     next_word = None
+            # else:
+            #     next_word = self.word_list[index+1]
+            # -------------------------------------------
+            if (word,next_word) not in self:
+                small_dicto = Dictogram([(next_word,word_after_next)])
+                self[(word,next_word)] = small_dicto
+
             else:
-                next_word = self.word_list[index+1]
-
-            if word not in self:
-                small_dicto = Dictogram([next_word])
-                self[word] = small_dicto
-
-            else:
-                self[word].add_count(next_word)
+                self[(word,next_word)].add_count((next_word,word_after_next))
 
     def creating_sentence(self, length = 10):
         """Create sentence using both dictogram and the markov chain just made."""
@@ -58,8 +61,8 @@ class Markov_Chain(dict):
 
 if __name__=="__main__":
     # test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
-    test_string = "I like dogs and you like dogs. I like cats but you hate cats."
+    test_string = "I like dogs and you like dogs. I like cats but you hate cats. I like I like I like I like I like I like."
     print(test_string)
     first_chain = Markov_Chain(test_string)
     print(first_chain)
-    print(first_chain.creating_sentence())
+    # print(first_chain.creating_sentence())
