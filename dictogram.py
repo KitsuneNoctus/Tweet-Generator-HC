@@ -45,12 +45,9 @@ class Dictogram(dict):
         each word's probability of being chosen by its observed frequency."""
         # TODO: Randomly choose a word based on its frequency in this histogram
         rates = {}
-
         for entry in self:
             rate = self[entry]/self.tokens
             rates[entry] = rate
-
-
         dart = random.random()
         num_total = 0
         check_start = 0
