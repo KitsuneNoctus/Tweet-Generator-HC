@@ -18,8 +18,10 @@ class Markov_Chain(dict):
     def __init__(self, word_list):
         """Initialize the class and create variables"""
         self.word_list = create_list(word_list)
+        # self.word_list = word_list
         self.dictionary_histogram = Dictogram(self.word_list)
-
+    def generate_Markov():
+        pass
         """ Creating the Markov Chain """
         #Edit so as to get rid of length of list minus 1 and it doesnt run errors
         for index in range(len(self.word_list)-2):
