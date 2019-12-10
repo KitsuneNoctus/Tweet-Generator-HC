@@ -52,7 +52,8 @@ class HashTable(object):
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(n), Goes through each index in the list, and get all items from the bucket"""
+        - O(n)
+        - Goes through each index in the list, and get all items from the bucket"""
         # Collect all pairs of key-value entries in each bucket
         all_items = []
         for bucket in self.buckets:
@@ -62,26 +63,23 @@ class HashTable(object):
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
         TODO: Running time: O(???) Why and under what conditions?
-        Run time: O(n), go through each item in the bucket list
-        and it calls the length function of each linked list, only then needed the single for
+        - Run time: O(n)
+        - go through each item in the bucket list and it calls the length function of each linked list, only then needed the single for
         loop as a result"""
         # TODO: Loop through all buckets
         # TODO: Count number of key-value entries in each bucket
         count = 0
         for bucket in self.buckets:
             count += bucket.length()
-            # for key, value in bucket.items():
-            #     count += 1
-            # print(bucket.length())
-            # count += bucket.length()
-            # print(count)
         return count
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(1), gets called inly once, and uses other functions to instatntly find
-        what is being looked for. Also using methods of linked list to help as well."""
+        - O(1) or O(L)
+        - Best scenario, the item contained is in the first item of the bucket.
+        - Average Case: Full load factor must be run through (n/b) in order to check each of the values
+        in each bucket"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         #reference to https://github.com/BriantOliveira/Computer_Science_2/blob/master/hashtable.py
@@ -95,8 +93,10 @@ class HashTable(object):
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(1), gets called inly once, and uses other functions to instatntly find
-        what is being looked for. Also using methods of linked list to help as well."""
+        - O(1) or O(L)
+        - Best time: Finds the value at the head of the bucket related to the hash/index key
+        - Average: Must go through the load in order to find the item.
+        """
         # TODO: Find bucket where given key belongs
         index = self._bucket_index(key)
         bucket = self.buckets[index]
@@ -113,8 +113,9 @@ class HashTable(object):
     def set(self, key, value):
         """Insert or update the given key with its associated value.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(1), gets called inly once, and uses other functions to instatntly find
-        what is being looked for. Also using methods of linked list to help as well."""
+        - O(1) or O(L)
+        - Best time: Will get the bucket and a node assciated with it to deposit the info in if its new
+        - Average: Will go through the load to find where the data is stored before deleting and refilling the spot"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
@@ -130,8 +131,10 @@ class HashTable(object):
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(1), gets called inly once, and uses other functions to instatntly find
-        what is being looked for. Also using methods of linked list to help as well."""
+        - O(1) or O(L)
+        - Best time: gets the bucket that hash is related to, and the item is first(at the head)
+        - Average: It will need to run through the full load of items in the hashtable,
+        can run to the end if the item doesn't exist."""
         # TODO: Find bucket where given key belongs
         index = self._bucket_index(key)
         bucket = self.buckets[index]

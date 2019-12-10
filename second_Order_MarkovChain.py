@@ -20,8 +20,7 @@ class Markov_Chain(dict):
         self.word_list = create_list(word_list)
         # self.word_list = word_list
         self.dictionary_histogram = Dictogram(self.word_list)
-    def generate_Markov():
-        pass
+
         """ Creating the Markov Chain """
         #Edit so as to get rid of length of list minus 1 and it doesnt run errors
         for index in range(len(self.word_list)-2):
@@ -35,6 +34,9 @@ class Markov_Chain(dict):
 
             else:
                 self[(word,next_word)].add_count((next_word,word_after_next))
+
+    def generate_Markov(self):
+        pass
 
     def creating_sentence(self, length = 10):
         """Create sentence using both dictogram and the markov chain just made."""
