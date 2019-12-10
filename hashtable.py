@@ -27,7 +27,9 @@ class HashTable(object):
     def keys(self):
         """Return a list of all keys in this hash table.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(n^2), When it runs it will go through two For loops. Loop into a loop"""
+        - O(n)
+        - Go through every bucket (b) and checking each item in the bucket(L) (b*l)
+        then youre going through the total number of items(n)"""
         # Collect all keys in each bucket
         all_keys = []
         for bucket in self.buckets:
@@ -38,9 +40,9 @@ class HashTable(object):
     def values(self):
         """Return a list of all values in this hash table.
         TODO: Running time: O(???) Why and under what conditions?
-        - O(n^2), when called it goes though all items in the HashTable
-        first getting to the index of the bucket, then going through each item in the linked
-        list associated with that bucket"""
+        - O(n)
+        - Go through every bucket (b) and checking each item in the bucket(L) (b*l)
+        then youre going through the total number of items(n)"""
         # TODO: Loop through all buckets
         # TODO: Collect all values in each bucket
         all_values = []
@@ -53,7 +55,8 @@ class HashTable(object):
         """Return a list of all items (key-value pairs) in this hash table.
         TODO: Running time: O(???) Why and under what conditions?
         - O(n)
-        - Goes through each index in the list, and get all items from the bucket"""
+        - Go through every bucket (b) and checking each item in the bucket(L) (b*l)
+        then youre going through the total number of items(n)"""
         # Collect all pairs of key-value entries in each bucket
         all_items = []
         for bucket in self.buckets:
@@ -77,7 +80,7 @@ class HashTable(object):
         """Return True if this hash table contains the given key, or False.
         TODO: Running time: O(???) Why and under what conditions?
         - O(1) or O(L)
-        - Best scenario, the item contained is in the first item of the bucket.
+        - Best scenario: the item contained is in the first item of the bucket.
         - Average Case: Full load factor must be run through (n/b) in order to check each of the values
         in each bucket"""
         # TODO: Find bucket where given key belongs
