@@ -60,7 +60,9 @@ class Markov_Chain(dict):
                 adding_word = next_word_for
                 length -= 1
             else:
+                next_word_for = self[adding_word].sample()
                 created_sentence += next_word_for[1]
+                adding_word = next_word_for
                 length -= 1
 
 

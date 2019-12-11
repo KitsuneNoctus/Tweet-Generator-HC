@@ -25,7 +25,7 @@ def create_random_sentence(sen_length):
 def index():
     """Return homepage."""
     generate_sentence = created_sentence()
-    sentence = generate_sentence.make_sentence()
+    sentence = generate_sentence.make_sentence(True)
     return render_template("index.html", sentence=sentence)
 
 if __name__ == '__main__':
