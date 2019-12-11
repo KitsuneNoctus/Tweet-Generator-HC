@@ -18,7 +18,7 @@ class Markov_Chain(dict):
     def __init__(self, word_list, passed_text_list):
         """Initialize the class and create variables"""
         self.passed_text_list = passed_text_list
-        
+
         if self.passed_text_list == True:
             self.word_list = word_list
         else:
@@ -54,10 +54,14 @@ class Markov_Chain(dict):
         last_word = adding_word
 
         while length > 0:
-            next_word_for = self[adding_word].sample()
-            created_sentence += next_word_for[1]+" "
-            adding_word = next_word_for
-            length -= 1
+            if length > 1:
+                next_word_for = self[adding_word].sample()
+                created_sentence += next_word_for[1]+" "
+                adding_word = next_word_for
+                length -= 1
+            else:
+                created_sentence += next_word_for[1]
+                length -= 1
 
 
         return created_sentence
