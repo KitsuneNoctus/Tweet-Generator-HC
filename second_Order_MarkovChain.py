@@ -9,6 +9,7 @@ def create_list(string):
     text_words = []
     for word in string.split():
         # clean_word = word.strip(punctuation)
+        clean_word = word.strip(punctuation)
         text_words.append(word)
 
     return text_words

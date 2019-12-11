@@ -13,6 +13,7 @@ class created_sentence():
             for line in f:
                 for word in line.split():
                     #clean_word = word.strip(punctuation)
+                    clean_word = word.strip(punctuation)
                     text_words.append(clean_word)
         return text_words
 
