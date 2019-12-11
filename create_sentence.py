@@ -15,13 +15,19 @@ class created_sentence():
                     text_words.append(clean_word)
         return text_words
 
-    def make_sentence(self):
-        markov = Markov_Chain(self.create_word_list_from_text_file(), True)
+    def make_sentence(self, use_text):
+        if use_text == True:
+            markov = Markov_Chain(self.create_word_list_from_text_file(), True)
+        else:
+            markov = Markov_Chain("“Ilyena! My love, where are you?” The edge of his pale gray cloak trailed through blood as he stepped across the body of a woman, her golden-haired beauty marred by the horror of her last moments, her still-open eyes frozen in disbelief.",False)
         # print(markov)
         sentence = markov.creating_sentence(self.length)
         return sentence
 
 if __name__=="__main__":
     sentence = created_sentence()
-    actual_sentence = sentence.make_sentence()
+    actual_sentence = sentence.make_sentence(True)
+    print(actual_sentence)
+    sentence = created_sentence()
+    actual_sentence = sentence.make_sentence(False)
     print(actual_sentence)
