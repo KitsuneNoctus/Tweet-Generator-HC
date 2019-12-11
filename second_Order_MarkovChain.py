@@ -47,23 +47,32 @@ class Markov_Chain(dict):
     def creating_sentence(self, length = 10):
         """Create sentence using both dictogram and the markov chain just made."""
         #Edit so it adds periodss and not spaces at the end of a sentence.
-        created_sentence = ""
+        # created_sentence = ""
+        sentence_words = []
         #Help from John that really works well
         # adding_word = random.choice([words for words in list(self.keys()) if '^' in words[0] and '^' in words[1]])
-        adding_word = random.choice(list(self.keys()))
-        created_sentence += ' '.join(adding_word)+" "
+        current_state = random.choice(list(self.keys()))
+        next_word = current_state[1]
+        # created_sentence += ' '.join(adding_word)+" "
+        sentence_words.extend(current_state)
         length = length - 2
 
-        last_word = adding_word
+        # last_word = adding_word
         #Help from John that really works well
         # - - - - - - -
         while True:
-            if '.' not in adding_word[1] and '?' not in adding_word[1] and '!' not in adding_word[1]:
-                next_word_for = self[adding_word].sample()
-                created_sentence += next_word_for[1]+" "
-                adding_word = next_word_for
-            else:
+            #With Alans Help....A lot of this is....
+            if any(punctuation in next_word for punctuation in '.?!'):
                 break
+            # if '.' not in adding_word[1] and '?' not in adding_word[1] and '!' not in adding_word[1]:
+            else:  # all(punctuation not in next_word for punctuation in '.?!'):
+                histogram = self[current_state]
+                next_state = histogram.sample()
+                next_word = next_state[1]
+                # created_sentence += next_word_for[1]+" "
+                sentence_words.append(next_word)
+                # adding_word = next_word_for
+                current_state = next_state
 
         # while length > 0:
         #     if length > 1:
@@ -77,7 +86,7 @@ class Markov_Chain(dict):
         #         adding_word = next_word_for
         #         length -= 1
 
-
+        created_sentence = ' '.join(sentence_words).capitalize()
         return created_sentence
 
 if __name__=="__main__":
