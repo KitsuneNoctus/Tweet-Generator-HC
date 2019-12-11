@@ -8,8 +8,8 @@ def create_list(string):
     """Turns string into a list of words"""
     text_words = []
     for word in string.split():
-        clean_word = word.strip(punctuation)
-        text_words.append(clean_word)
+        # clean_word = word.strip(punctuation)
+        text_words.append(word)
 
     return text_words
 
@@ -47,11 +47,21 @@ class Markov_Chain(dict):
         """Create sentence using both dictogram and the markov chain just made."""
         #Edit so it adds periodss and not spaces at the end of a sentence.
         created_sentence = ""
+        #Help from John that really works well
+        # adding_word = random.choice([words for words in list(self.keys()) if '^' in words[0] and '^' in words[1]])
         adding_word = random.choice(list(self.keys()))
         created_sentence += ' '.join(adding_word)+" "
         length = length - 2
 
         last_word = adding_word
+        #Help from John that really works well
+        # while True:
+        #     if '.' not in adding_word[1] and '?' not in adding_word[1] and '!' not in adding_word[1]:
+        #         next_word_for = self[adding_word].sample()
+        #         created_sentence += next_word_for[1]+" "
+        #         adding_word = next_word_for
+        #     else:
+        #         break
 
         while length > 0:
             if length > 1:
