@@ -15,10 +15,15 @@ def create_list(string):
 
 #=============Markov Chain Class====================
 class Markov_Chain(dict):
-    def __init__(self, word_list):
+    def __init__(self, word_list, passed_text_list):
         """Initialize the class and create variables"""
-        self.word_list = create_list(word_list)
-        # self.word_list = word_list
+        self.passed_text_list = passed_text_list
+        
+        if self.passed_text_list == True:
+            self.word_list = word_list
+        else:
+            self.word_list = create_list(word_list)
+
         self.dictionary_histogram = Dictogram(self.word_list)
 
         """ Creating the Markov Chain """
