@@ -56,25 +56,26 @@ class Markov_Chain(dict):
 
         last_word = adding_word
         #Help from John that really works well
-        # while True:
-        #     if '.' not in adding_word[1] and '?' not in adding_word[1] and '!' not in adding_word[1]:
-        #         next_word_for = self[adding_word].sample()
-        #         created_sentence += next_word_for[1]+" "
-        #         adding_word = next_word_for
-        #     else:
-        #         break
-
-        while length > 0:
-            if length > 1:
+        # - - - - - - -
+        while True:
+            if '.' not in adding_word[1] and '?' not in adding_word[1] and '!' not in adding_word[1]:
                 next_word_for = self[adding_word].sample()
                 created_sentence += next_word_for[1]+" "
                 adding_word = next_word_for
-                length -= 1
             else:
-                next_word_for = self[adding_word].sample()
-                created_sentence += next_word_for[1]
-                adding_word = next_word_for
-                length -= 1
+                break
+
+        # while length > 0:
+        #     if length > 1:
+        #         next_word_for = self[adding_word].sample()
+        #         created_sentence += next_word_for[1]+" "
+        #         adding_word = next_word_for
+        #         length -= 1
+        #     else:
+        #         next_word_for = self[adding_word].sample()
+        #         created_sentence += next_word_for[1]
+        #         adding_word = next_word_for
+        #         length -= 1
 
 
         return created_sentence

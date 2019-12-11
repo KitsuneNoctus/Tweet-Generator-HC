@@ -13,8 +13,9 @@ class created_sentence():
             for line in f:
                 for word in line.split():
                     #clean_word = word.strip(punctuation)
-                    clean_word = word.strip(punctuation)
-                    text_words.append(clean_word)
+                    # clean_word = word.strip(punctuation)
+                    # text_words.append(clean_word)
+                    text_words.append(word)
         return text_words
 
     def make_sentence(self, use_text):
