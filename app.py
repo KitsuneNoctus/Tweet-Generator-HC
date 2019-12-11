@@ -9,17 +9,17 @@ from create_sentence import created_sentence
 
 app = Flask(__name__)
 
-def create_random_sentence(sen_length):
-    dict_histogram = Dictogram(get_words())
-    sentence = ""
-    while sen_length != 0:
-        if sen_length == 1:
-            sentence += dict_histogram.sample()
-        else:
-            sentence += (dict_histogram.sample() + " ")
-        sen_length -= 1
-
-    return sentence
+# def create_random_sentence(sen_length):
+#     dict_histogram = Dictogram(get_words())
+#     sentence = ""
+#     while sen_length != 0:
+#         if sen_length == 1:
+#             sentence += dict_histogram.sample()
+#         else:
+#             sentence += (dict_histogram.sample() + " ")
+#         sen_length -= 1
+#
+#     return sentence
 
 @app.route('/')
 def index():
