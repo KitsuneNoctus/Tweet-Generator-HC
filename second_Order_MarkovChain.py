@@ -70,8 +70,8 @@ class Markov_Chain(dict):
 
 if __name__=="__main__":
     # test_string = "I am. I was. I can only be. I will be king. It is very tiring. I am best."
-    test_string = "I like dogs and you like dogs. I like cats but you hate cats. I like I like I like I like I like I like."
+    test_string = "I like dogs and you like dogs. I like cats but you hate cats. I like I like I like I like I like I like. cry."
     print(test_string)
-    first_chain = Markov_Chain(test_string)
+    first_chain = Markov_Chain(test_string, False)
     print(first_chain)
     print(first_chain.creating_sentence())
