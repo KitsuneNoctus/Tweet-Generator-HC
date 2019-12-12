@@ -1,7 +1,7 @@
 import word_probability, word_frequency
 from second_Order_MarkovChain import Markov_Chain
 from string import punctuation
-import nltk
+# import nltk
 import re
 
 class created_sentence():
