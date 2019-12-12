@@ -1,6 +1,7 @@
 from word_probability import pick_one_word, calc_probability, convert_histogram
 from word_frequency import get_words
 from dictogram import Dictogram
+from listogram import Listogram
 from string import punctuation
 import random
 
@@ -26,6 +27,7 @@ class Markov_Chain(dict):
             self.word_list = create_list(word_list)
 
         self.dictionary_histogram = Dictogram(self.word_list)
+        self.listogram = Listogram(self.word_list)
 
         """ Creating the Markov Chain """
         #Edit so as to get rid of length of list minus 1 and it doesnt run errors
